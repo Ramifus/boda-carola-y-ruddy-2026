@@ -1,0 +1,63 @@
+---
+// Puntual.astro
+---
+
+<section id="puntual" class="relative w-full py-10 px-6">
+    <div
+        id="card-puntual"
+        data-revelar="abajo"
+        class="relative bg-white rounded-3xl shadow-xl px-7 py-9 text-center max-w-xs mx-auto"
+    >
+        <!-- Marco beige interior -->
+        <div
+            class="pointer-events-none absolute inset-3 rounded-2xl border"
+            style="border-color: rgba(201,200,163,0.4);"
+        >
+        </div>
+
+        <div class="relative">
+        <!-- ICONO RESTRICCIÓN -->
+        <img
+            src="/imagenes/restriccion.png"
+            alt="Solo adultos"
+            class="w-14 h-14 mx-auto icono-salvia"
+        />
+
+        <!-- TÍTULO -->
+        <p
+            class="font-above text-[1.45rem] text-[#4A1418] leading-tight mt-3"
+        >
+            Solo Adultos
+        </p>
+
+        <!-- DIVISOR con rombo beige -->
+        <div class="flex items-center justify-center gap-2 mt-3">
+            <span
+                class="h-px w-10"
+                style="background-color: rgba(201,200,163,0.6);"></span>
+            <span
+                class="w-1.5 h-1.5 rotate-45"
+                style="background-color: #C9C8A3;"></span>
+            <span
+                class="h-px w-10"
+                style="background-color: rgba(201,200,163,0.6);"></span>
+        </div>
+
+        <!-- TEXTO -->
+        <p
+            class="font-cormorant italic text-xl text-[#6B7133] mt-5 leading-relaxed"
+        >
+            Amamos a los niños, pero hemos decidido que nuestra celebración
+            será un evento exclusivo para adultos. Agradecemos mucho su
+            comprensión.
+        </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .icono-salvia {
+        filter: invert(74%) sepia(18%) saturate(960%) hue-rotate(26deg)
+            brightness(55%);
+    }
+</style>

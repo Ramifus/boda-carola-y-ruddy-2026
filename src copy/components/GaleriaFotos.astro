@@ -1,0 +1,374 @@
+---
+// GaleriaFotos.astro
+const fotos = Array.from(
+    { length: 14 },
+    (_, i) => `/imagenes/foto${i + 1}.webp`,
+);
+// Duplicamos la lista para que el carrusel haga un bucle continuo y sin cortes
+const carrusel = [...fotos, ...fotos];
+---
+
+<section
+    id="galeria-fotos"
+    class="relative w-full py-12 overflow-hidden isolate"
+>
+    <!-- FLOR DECORATIVA -->
+    <img
+        src="/imagenes/florcostado.png"
+        alt=""
+        aria-hidden="true"
+        class="absolute top-10 right-0 w-36 pointer-events-none select-none opacity-15 scale-x-[-1] z-[-1]"
+    />
+
+    <!-- SEPARADOR -->
+    <img
+        src="/imagenes/separador.png"
+        alt=""
+        aria-hidden="true"
+        data-revelar="centro"
+        class="mx-auto mb-5 w-48"
+    />
+
+    <!-- TÍTULO -->
+    <p
+        id="galeria-titulo"
+        data-revelar="arriba"
+        class="font-great-vibes text-5xl text-[#4A1418] text-center leading-none"
+    >
+        Nosotros
+    </p>
+    <p
+        id="galeria-subtitulo"
+        data-revelar="izquierda"
+        class="font-cormorant italic text-lg text-[#6B7133] text-center mt-2 mb-8 px-6"
+    >
+        Nuestra historia en imágenes
+    </p>
+
+    <!-- CARRUSEL AUTOMÁTICO -->
+    <div data-revelar="centro" class="galeria-marquee relative w-full overflow-hidden">
+        <!-- Degradados laterales para que las fotos entren/salgan suaves -->
+        <div
+            class="absolute inset-y-0 left-0 w-14 z-10 pointer-events-none"
+            style="background: linear-gradient(to right, #ffffff, transparent);"
+        >
+        </div>
+        <div
+            class="absolute inset-y-0 right-0 w-14 z-10 pointer-events-none"
+            style="background: linear-gradient(to left, #ffffff, transparent);"
+        >
+        </div>
+
+        <div class="galeria-track flex gap-3 w-max px-3" data-set={fotos.length}>
+            {
+                carrusel.map((src, i) => (
+                    <div class="shrink-0 w-44">
+                        <div class="bg-white p-1.5 rounded-2xl shadow-md">
+                            <div class="overflow-hidden rounded-xl">
+                                <img
+                                    src={src}
+                                    alt={`Foto ${(i % fotos.length) + 1}`}
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="w-full h-56 object-cover block"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+
+    <!-- BOTÓN VER TODA LA GALERÍA -->
+    <div data-revelar="abajo" class="text-center mt-8">
+        <button
+            id="btn-ver-galeria"
+            class="inline-flex items-center gap-2 py-3 px-8 rounded-full font-cormorant uppercase text-sm tracking-widest text-white bg-[#4A1418] shadow-md hover:bg-[#360E11] transition-colors"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+            >
+                <path
+                    d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                ></path>
+            </svg>
+            Ver toda la galería
+        </button>
+    </div>
+</section>
+
+<!-- MODAL / LIGHTBOX CON TODAS LAS FOTOS -->
+<div
+    id="galeria-modal"
+    class="fixed inset-0 z-[10000] hidden items-start justify-center p-4 overflow-y-auto"
+    style="background-color: rgba(38,10,13,0.94);"
+>
+    <div class="relative w-full max-w-md mx-auto py-12">
+        <!-- BOTÓN CERRAR -->
+        <button
+            id="btn-cerrar-galeria"
+            aria-label="Cerrar galería"
+            class="fixed top-4 right-4 z-[10001] w-11 h-11 rounded-full flex items-center justify-center bg-white/90 shadow-lg hover:scale-110 transition-transform"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#4A1418"
+                stroke-width="2.2"
+                stroke-linecap="round"
+            >
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+            </svg>
+        </button>
+
+        <!-- TÍTULO MODAL -->
+        <p class="font-great-vibes text-5xl text-white text-center mb-2">
+            Nuestra Galería
+        </p>
+        <div class="flex items-center justify-center gap-2 mb-7">
+            <span
+                class="h-px w-10"
+                style="background-color: rgba(201,200,163,0.7);"></span>
+            <span
+                class="w-1.5 h-1.5 rotate-45"
+                style="background-color: #C9C8A3;"></span>
+            <span
+                class="h-px w-10"
+                style="background-color: rgba(201,200,163,0.7);"></span>
+        </div>
+
+        <!-- MOSAICO COMPLETO -->
+        <div class="columns-2 gap-3">
+            {
+                fotos.map((src, i) => (
+                    <div class="modal-item break-inside-avoid mb-3 bg-white p-1.5 rounded-2xl shadow-lg">
+                        <div class="overflow-hidden rounded-xl">
+                            <img
+                                src={src}
+                                alt={`Foto ${i + 1}`}
+                                loading="lazy"
+                                decoding="async"
+                                class="w-full h-auto block"
+                            />
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    import { gsap } from "gsap";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // ── MODAL: abrir / cerrar ──
+        const modal = document.getElementById("galeria-modal");
+        const btnVer = document.getElementById("btn-ver-galeria");
+        const btnCerrar = document.getElementById("btn-cerrar-galeria");
+
+        const abrir = () => {
+            if (!modal) return;
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            document.body.style.overflow = "hidden";
+            gsap.fromTo(
+                modal,
+                { opacity: 0 },
+                { opacity: 1, duration: 0.4, ease: "power2.out" },
+            );
+            gsap.fromTo(
+                ".modal-item",
+                { opacity: 0, y: 24, scale: 0.96 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    stagger: 0.08,
+                    delay: 0.1,
+                },
+            );
+        };
+
+        const cerrar = () => {
+            if (!modal) return;
+            gsap.to(modal, {
+                opacity: 0,
+                duration: 0.3,
+                ease: "power2.out",
+                onComplete: () => {
+                    modal.classList.add("hidden");
+                    modal.classList.remove("flex");
+                    document.body.style.overflow = "auto";
+                },
+            });
+        };
+
+        // ═══════════════════════════════════════════════════════════
+        //  CARRUSEL: automático, arrastrable con el dedo y con inercia
+        //  Al soltar sigue de largo, y un segundo después retoma solo.
+        // ═══════════════════════════════════════════════════════════
+        const marquee = document.querySelector(
+            ".galeria-marquee",
+        ) as HTMLElement | null;
+        const track = document.querySelector(
+            ".galeria-track",
+        ) as HTMLElement | null;
+
+        if (marquee && track) {
+            const VEL_AUTO = 22; // px por segundo: el mismo ritmo que tenía el CSS
+            const ESPERA = 1000; // ms que sigue libre después de soltar
+            const TOPE = 2500; // px/s: techo del envión, para que no se dispare
+
+            let anchoSet = 0; // ancho de una vuelta completa (todas las fotos + su espacio)
+            let offset = 0; // posición actual del riel
+            let velocidad = VEL_AUTO; // px/s, positivo = viaja hacia la izquierda
+            let arrastrando = false;
+            let ultimoX = 0;
+            let ultimoT = 0;
+            let envion = 0; // velocidad que traía el dedo al soltar
+            let reanudar = 0; // momento en que vuelve el automático
+            let tPrev = performance.now();
+
+            // Un "set" es la lista original; el resto son la copia que hace el
+            // bucle. Medimos de la primera foto a su copia: ahí está el ciclo.
+            function medir() {
+                const porSet = Number(track.dataset.set) || 1;
+                const items = track.children;
+                if (items.length > porSet) {
+                    anchoSet =
+                        (items[porSet] as HTMLElement).offsetLeft -
+                        (items[0] as HTMLElement).offsetLeft;
+                }
+            }
+            medir();
+            window.addEventListener("resize", medir);
+
+            function pintar() {
+                if (anchoSet > 0) {
+                    // Dejamos offset siempre dentro de una vuelta: el salto cae
+                    // sobre una foto idéntica, así que no se ve el corte.
+                    offset = (((offset % anchoSet) + anchoSet) % anchoSet) - anchoSet;
+                }
+                track.style.transform = `translate3d(${offset}px, 0, 0)`;
+            }
+
+            const quieto = window.matchMedia(
+                "(prefers-reduced-motion: reduce)",
+            ).matches;
+
+            function frame(t: number) {
+                // Tope al delta por si la pestaña estuvo en segundo plano: sin
+                // esto, al volver pega un salto de varios segundos de golpe.
+                const dt = Math.min(50, t - tPrev) / 1000;
+                tPrev = t;
+
+                if (!arrastrando) {
+                    if (t >= reanudar) {
+                        // Vuelta suave al ritmo de siempre
+                        const objetivo = quieto ? 0 : VEL_AUTO;
+                        velocidad += (objetivo - velocidad) * Math.min(1, dt * 2.5);
+                    } else {
+                        // Inercia: el envión se apaga hasta un 4% en un segundo
+                        velocidad *= Math.pow(0.04, dt);
+                    }
+                    offset -= velocidad * dt;
+                }
+
+                pintar();
+                requestAnimationFrame(frame);
+            }
+            requestAnimationFrame(frame);
+
+            marquee.addEventListener("pointerdown", (e) => {
+                const ev = e as PointerEvent;
+                arrastrando = true;
+                velocidad = 0;
+                envion = 0;
+                ultimoX = ev.clientX;
+                ultimoT = performance.now();
+                marquee.classList.add("arrastrando");
+                marquee.setPointerCapture?.(ev.pointerId);
+            });
+
+            marquee.addEventListener("pointermove", (e) => {
+                if (!arrastrando) return;
+                const ev = e as PointerEvent;
+                const ahora = performance.now();
+                const dx = ev.clientX - ultimoX;
+                const dtms = Math.max(1, ahora - ultimoT);
+
+                offset += dx; // el riel sigue al dedo
+                // dx positivo = dedo hacia la derecha = el riel retrocede,
+                // por eso el envión lleva el signo cambiado.
+                envion = Math.max(-TOPE, Math.min(TOPE, (-dx / dtms) * 1000));
+
+                ultimoX = ev.clientX;
+                ultimoT = ahora;
+            });
+
+            function soltar(e: Event) {
+                if (!arrastrando) return;
+                arrastrando = false;
+                marquee.classList.remove("arrastrando");
+                const ev = e as PointerEvent;
+                if (ev.pointerId !== undefined)
+                    marquee.releasePointerCapture?.(ev.pointerId);
+
+                // Si el dedo se frenó antes de soltar, no hay envión que seguir.
+                const parado = performance.now() - ultimoT > 120;
+                velocidad = parado ? 0 : envion;
+                reanudar = performance.now() + ESPERA;
+            }
+
+            marquee.addEventListener("pointerup", soltar);
+            marquee.addEventListener("pointercancel", soltar);
+            marquee.addEventListener("pointerleave", soltar);
+        }
+
+        btnVer?.addEventListener("click", abrir);
+        btnCerrar?.addEventListener("click", cerrar);
+        // Cerrar al tocar el fondo oscuro (fuera de las fotos)
+        modal?.addEventListener("click", (e) => {
+            if (e.target === modal) cerrar();
+        });
+    });
+</script>
+
+<style>
+    /* El carrusel ya no se mueve por CSS: lo mueve el script de abajo, que es
+       lo único que permite arrastrarlo con el dedo. Acá solo queda lo que
+       hace falta para que el gesto se sienta bien. */
+    .galeria-marquee {
+        /* pan-y: el navegador se queda con el desplazamiento vertical de la
+           página y nos deja a nosotros el horizontal. Sin esto, arrastrar de
+           costado hace scrollear la invitación entera. */
+        touch-action: pan-y;
+        cursor: grab;
+    }
+    .galeria-marquee.arrastrando {
+        cursor: grabbing;
+    }
+
+    .galeria-track {
+        will-change: transform;
+    }
+
+    /* Al arrastrar no queremos que se seleccione texto ni que el navegador
+       intente "levantar" la foto como si fuera un archivo. */
+    .galeria-marquee img {
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-user-drag: none;
+        pointer-events: none;
+    }
+</style>

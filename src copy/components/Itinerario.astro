@@ -1,0 +1,80 @@
+---
+// Itinerario.astro
+
+// Las celdas pares van a la izquierda y las impares a la derecha, bajadas,
+// para formar el zigzag a los lados de la línea central.
+const momentos = [
+    { icono: "iglesia", titulo: "Ceremonia<br />Religiosa", hora: "11:30" },
+    { icono: "brindis", titulo: "Cóctel de<br />Bienvenida", hora: "13:30" },
+    { icono: "anillo", titulo: "Ceremonia<br />de Votos", hora: "14:30" },
+    { icono: "cena", titulo: "Deliciosa<br />Comida", hora: "16:00" },
+    { icono: "bailando", titulo: "Fiesta", hora: "17:00" },
+    { icono: "despedida", titulo: "Felices por<br />Siempre", hora: "22:00" },
+];
+---
+
+<section
+    id="itinerario"
+    class="relative w-full py-10 px-6 overflow-hidden isolate"
+>
+    <!-- FLOR DECORATIVA IZQUIERDA -->
+    <img
+        src="/imagenes/florcostado.png"
+        alt=""
+        aria-hidden="true"
+        class="absolute top-1/2 left-0 w-40 pointer-events-none select-none opacity-30 -translate-y-1/2 z-[-1]"
+    />
+
+    <!-- TÍTULO -->
+    <p
+        data-revelar="arriba"
+        class="font-great-vibes text-4xl text-[#4A1418] text-center mb-10 leading-none"
+    >
+        Itinerario
+    </p>
+
+    <!-- TIMELINE GRID -->
+    <div class="relative max-w-sm mx-auto">
+        <!-- Línea vertical central -->
+        <div
+            class="absolute left-1/2 top-0 bottom-0 -translate-x-1/2"
+            style="border-left: 1.5px dashed rgba(201,200,163,0.5);"
+        >
+        </div>
+
+        <div class="grid grid-cols-2">
+            {
+                momentos.map((m, i) => (
+                    <div
+                        data-revelar={i % 2 === 0 ? "izquierda" : "derecha"}
+                        class={`flex flex-col items-center text-center ${i % 2 === 0 ? "pr-3 pt-3" : "pl-3 pt-16"}`}
+                    >
+                        <img
+                            src={`/imagenes/${m.icono}.png`}
+                            alt=""
+                            aria-hidden="true"
+                            class="w-12 h-12 icono-salvia"
+                        />
+                        <!-- Alto fijo de 2 líneas para que todas las celdas midan igual -->
+                        <div class="mt-2 min-h-[2.2rem] flex items-center">
+                            <p
+                                class="font-cormorant uppercase text-sm text-[#4A1418] leading-tight"
+                                set:html={m.titulo}
+                            />
+                        </div>
+                        <p class="font-charm font-bold text-lg text-[#6B7133] mt-1 leading-none">
+                            {m.hora} Hrs.
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .icono-salvia {
+        filter: invert(74%) sepia(18%) saturate(960%) hue-rotate(26deg)
+            brightness(55%);
+    }
+</style>

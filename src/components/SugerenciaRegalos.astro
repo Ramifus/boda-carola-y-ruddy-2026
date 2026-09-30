@@ -1,0 +1,309 @@
+---
+// SugerenciaRegalos.astro
+
+const regalos = [
+    "Heladera",
+    "Microondas",
+    "Cocina",
+    "Batidora",
+    "Caja de herramientas",
+    "Set parrillero",
+    "Batería de ollas",
+    "Sartén antiadherente",
+    "Juego de platos",
+    "Juego de cubiertos",
+    "Juego de cuchillos",
+    "Juego de vasos",
+    "Escurridor de platos",
+    "Plancha",
+    "Edredón",
+    "Almohadas decorativas",
+    "Veladores",
+    "Estufa",
+    "Juego de living",
+    "Set de baño",
+    "Juego de toallas",
+    "Sábanas",
+];
+---
+
+<section
+    id="sugerencia-regalos"
+    class="relative w-full py-10 px-6 text-center overflow-hidden isolate"
+>
+    <!-- FLOR DECORATIVA IZQUIERDA -->
+    <img
+        src="/imagenes/florcostado.png"
+        alt=""
+        aria-hidden="true"
+        class="absolute top-1/2 left-0 w-40 pointer-events-none select-none opacity-30 -translate-y-1/2 z-[-1]"
+    />
+
+    <!-- TÍTULO -->
+    <p
+        data-revelar="arriba"
+        class="font-above text-[1.51rem] text-[#4A1418] leading-snug mb-6"
+    >
+        Sugerencia de Regalos
+    </p>
+
+    <!-- ICONO REGALO -->
+    <svg
+        data-revelar="centro"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 64 64"
+        fill="none"
+        class="w-14 h-14 mx-auto"
+        stroke="#6B7133"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    >
+        <!-- Caja del regalo -->
+        <rect x="8" y="28" width="48" height="30" rx="3"></rect>
+        <!-- Tapa -->
+        <rect x="6" y="20" width="52" height="10" rx="3"></rect>
+        <!-- Lazo vertical -->
+        <line x1="32" y1="20" x2="32" y2="58"></line>
+        <!-- Lazo horizontal (tapa) -->
+        <line x1="6" y1="25" x2="58" y2="25"></line>
+        <!-- Moño izquierdo -->
+        <path d="M32,20 C28,14 18,14 20,20 C22,26 32,20 32,20Z"></path>
+        <!-- Moño derecho -->
+        <path d="M32,20 C36,14 46,14 44,20 C42,26 32,20 32,20Z"></path>
+    </svg>
+
+    <!-- TEXTO PRINCIPAL: la presencia por delante del obsequio -->
+    <p
+        data-revelar="izquierda"
+        class="font-cormorant italic text-[1.35rem] text-[#6B7133] mt-6 leading-[1.9] max-w-xs mx-auto"
+    >
+        Tu presencia es nuestro mejor regalo, pero si deseas acompañarnos
+        con un detalle, hemos preparado estas opciones para nuestra nueva
+        etapa.
+    </p>
+
+    <!-- PANEL DESTACADO: QR y mesa de regalos -->
+    <div
+        data-revelar="derecha"
+        class="relative max-w-xs mx-auto mt-8 rounded-3xl px-7 py-8 shadow-md"
+        style="background: linear-gradient(160deg, #fbf8f0 0%, #f4efe1 100%); border: 1px solid rgba(201,200,163,0.35);"
+    >
+        <!-- Marco beige interior -->
+        <div
+            class="pointer-events-none absolute inset-2.5 rounded-2xl border"
+            style="border-color: rgba(201,200,163,0.4);"
+        >
+        </div>
+
+        <div class="relative flex flex-col items-center">
+            <!-- QR DE REGALOS -->
+            <div
+                class="bg-white rounded-2xl shadow-md p-4 border border-[#E3E2CC]"
+            >
+                <img
+                    src="/imagenes/qr.png"
+                    alt="Código QR de regalos"
+                    class="w-40 h-40 mx-auto"
+                />
+            </div>
+            <p
+                class="font-cormorant italic text-[1.35rem] text-[#6B7133] mt-3 leading-[1.9]"
+            >
+                Escanea el código QR
+            </p>
+
+            <!-- ORNAMENTO: rombo entre líneas -->
+            <div class="flex items-center justify-center gap-2 mt-4">
+                <span
+                    class="h-px w-10"
+                    style="background-color: rgba(201,200,163,0.6);"></span>
+                <span
+                    class="w-1.5 h-1.5 rotate-45"
+                    style="background-color: #C9C8A3;"></span>
+                <span
+                    class="h-px w-10"
+                    style="background-color: rgba(201,200,163,0.6);"></span>
+            </div>
+
+            <!-- DATOS DE LA CUENTA -->
+            <p class="font-upcil uppercase text-lg text-[#4A1418] mt-4">
+                Cuenta destino
+            </p>
+            <p
+                class="font-cormorant text-[1.35rem] text-[#6B7133] leading-snug tracking-wider select-all"
+            >
+                7500349535
+            </p>
+
+            <p class="font-upcil uppercase text-lg text-[#4A1418] mt-3">
+                Concepto
+            </p>
+            <p
+                class="font-cormorant italic text-[1.35rem] text-[#6B7133] leading-snug"
+            >
+                Boda Caro y Ruddy
+            </p>
+
+            <!-- BOTÓN: abre la lista de regalos -->
+            <button
+                id="btn-ver-regalos"
+                class="inline-flex items-center gap-2 mt-7 py-3 px-8 rounded-full font-cormorant uppercase text-sm tracking-widest text-white bg-[#4A1418] shadow-md hover:bg-[#360E11] transition-colors"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <rect x="3" y="9" width="18" height="12" rx="1.5"></rect>
+                    <rect x="2" y="6" width="20" height="4" rx="1"></rect>
+                    <line x1="12" y1="6" x2="12" y2="21"></line>
+                    <path d="M12,6 C10,2.5 5.5,3 7,6"></path>
+                    <path d="M12,6 C14,2.5 18.5,3 17,6"></path>
+                </svg>
+                Ver lista de regalos
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- MODAL CON LA LISTA DE REGALOS -->
+<div
+    id="regalos-modal"
+    class="fixed inset-0 z-[10000] hidden items-start justify-center p-4 overflow-y-auto"
+    style="background-color: rgba(38,10,13,0.94);"
+>
+    <div class="relative w-full max-w-md mx-auto py-12">
+        <!-- BOTÓN CERRAR -->
+        <button
+            id="btn-cerrar-regalos"
+            aria-label="Cerrar lista de regalos"
+            class="fixed top-4 right-4 z-[10001] w-11 h-11 rounded-full flex items-center justify-center bg-white/90 shadow-lg hover:scale-110 transition-transform"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#4A1418"
+                stroke-width="2.2"
+                stroke-linecap="round"
+            >
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+            </svg>
+        </button>
+
+        <!-- TARJETA MARFIL -->
+        <div
+            id="regalos-tarjeta"
+            class="relative rounded-3xl px-6 py-10 shadow-2xl"
+            style="background: linear-gradient(160deg, #fbf8f0 0%, #f4efe1 100%);"
+        >
+            <!-- Marco interior -->
+            <div
+                class="pointer-events-none absolute inset-2.5 rounded-2xl border"
+                style="border-color: rgba(201,200,163,0.6);"
+            >
+            </div>
+
+            <div class="relative text-center">
+                <p class="font-above text-[1.82rem] text-[#4A1418] leading-none">
+                    Lista de Regalos
+                </p>
+                <div class="flex items-center justify-center gap-2 mt-4 mb-7">
+                    <span
+                        class="h-px w-10"
+                        style="background-color: rgba(201,200,163,0.8);"></span>
+                    <span
+                        class="w-1.5 h-1.5 rotate-45"
+                        style="background-color: #6B7133;"></span>
+                    <span
+                        class="h-px w-10"
+                        style="background-color: rgba(201,200,163,0.8);"></span>
+                </div>
+
+                <ul class="grid grid-cols-2 gap-x-4 gap-y-3 text-left">
+                    {
+                        regalos.map((regalo) => (
+                            <li class="regalo-item flex items-start gap-2">
+                                <span
+                                    class="w-1.5 h-1.5 rotate-45 shrink-0 mt-[0.6rem]"
+                                    style="background-color: #4A1418;"
+                                />
+                                <span class="font-cormorant text-lg text-[#6B7133] leading-snug">
+                                    {regalo}
+                                </span>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    import { gsap } from "gsap";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("regalos-modal");
+        const btnVer = document.getElementById("btn-ver-regalos");
+        const btnCerrar = document.getElementById("btn-cerrar-regalos");
+
+        const abrir = () => {
+            if (!modal) return;
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            document.body.style.overflow = "hidden";
+            gsap.fromTo(
+                modal,
+                { opacity: 0 },
+                { opacity: 1, duration: 0.4, ease: "power2.out" },
+            );
+            gsap.fromTo(
+                "#regalos-tarjeta",
+                { opacity: 0, y: 30, scale: 0.96 },
+                { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power2.out", delay: 0.1 },
+            );
+            gsap.fromTo(
+                ".regalo-item",
+                { opacity: 0, y: 10 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.4,
+                    ease: "power2.out",
+                    stagger: 0.04,
+                    delay: 0.35,
+                },
+            );
+        };
+
+        const cerrar = () => {
+            if (!modal) return;
+            gsap.to(modal, {
+                opacity: 0,
+                duration: 0.3,
+                ease: "power2.out",
+                onComplete: () => {
+                    modal.classList.add("hidden");
+                    modal.classList.remove("flex");
+                    document.body.style.overflow = "auto";
+                },
+            });
+        };
+
+        btnVer?.addEventListener("click", abrir);
+        btnCerrar?.addEventListener("click", cerrar);
+        // Cerrar al tocar el fondo oscuro (fuera de la tarjeta)
+        modal?.addEventListener("click", (e) => {
+            if (e.target === modal) cerrar();
+        });
+    });
+</script>

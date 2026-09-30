@@ -1,0 +1,114 @@
+---
+// DireccionCeremonia.astro
+---
+
+<section
+    id="direccion-ceremonia"
+    class="relative w-full py-10 px-6 overflow-hidden isolate"
+>
+    <!-- FLOR DECORATIVA -->
+    <img
+        src="/imagenes/florcostado.png"
+        alt=""
+        aria-hidden="true"
+        class="absolute top-1/2 right-0 w-36 pointer-events-none select-none opacity-20 -translate-y-1/2 scale-x-[-1] z-[-1]"
+    />
+
+    <div class="max-w-xs mx-auto">
+        <!-- CARD CEREMONIA RELIGIOSA -->
+        <div
+            id="card-ceremonia"
+            data-revelar="izquierda"
+            class="relative bg-white rounded-3xl shadow-xl px-7 py-9 text-center"
+        >
+            <!-- Marco beige interior -->
+            <div
+                class="pointer-events-none absolute inset-3 rounded-2xl border"
+                style="border-color: rgba(201,200,163,0.4);"
+            >
+            </div>
+
+            <div class="relative">
+                <!-- ICONO -->
+                <img
+                    src="/imagenes/iglesia.png"
+                    alt="Iglesia"
+                    class="w-14 h-14 mx-auto icono-salvia"
+                />
+
+                <!-- TÍTULO -->
+                <p
+                    class="font-great-vibes text-[2.5rem] text-[#4A1418] leading-tight mt-3"
+                >
+                    Ceremonia Religiosa
+                </p>
+
+                <!-- DIVISOR con rombo beige -->
+                <div class="flex items-center justify-center gap-2 mt-4">
+                    <span
+                        class="h-px w-12"
+                        style="background-color: rgba(201,200,163,0.6);"></span>
+                    <span
+                        class="w-1.5 h-1.5 rotate-45"
+                        style="background-color: #C9C8A3;"></span>
+                    <span
+                        class="h-px w-12"
+                        style="background-color: rgba(201,200,163,0.6);"></span>
+                </div>
+
+                <!-- HORA -->
+                <p
+                    class="font-charm font-bold text-3xl text-[#4A1418] mt-4 leading-none"
+                >
+                    11:30
+                </p>
+                <p
+                    class="font-cormorant uppercase tracking-[0.25em] text-sm text-[#6B7133] mt-1"
+                >
+                    horas
+                </p>
+
+                <!-- LUGAR -->
+                <p
+                    class="font-cormorant uppercase text-[1.4rem] text-[#6B7133] tracking-[0.1em] mt-5 leading-relaxed"
+                >
+                    Iglesia Perpetuo Socorro
+                </p>
+
+                <!-- DIRECCIÓN -->
+                <p
+                    class="font-cormorant italic text-xl text-[#6B7133] mt-3 leading-relaxed"
+                >
+                    B/ Juan XXIII, calle 6 de Junio
+                </p>
+
+                <!-- BOTÓN con ícono de ubicación -->
+                <a
+                    href="https://maps.app.goo.gl/91zawGWkUuRBxR4c9?g_st=iw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 mt-6 py-2.5 px-7 rounded-full font-cormorant uppercase text-xs tracking-widest text-white bg-[#4A1418] shadow-md hover:bg-[#360E11] transition-colors"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-3.5 h-3.5"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                    >
+                        <path
+                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"
+                        ></path>
+                    </svg>
+                    Ver Ubicación
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .icono-salvia {
+        filter: invert(74%) sepia(18%) saturate(960%) hue-rotate(26deg)
+            brightness(55%);
+    }
+</style>

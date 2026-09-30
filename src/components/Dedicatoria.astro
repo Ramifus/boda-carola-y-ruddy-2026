@@ -1,0 +1,67 @@
+---
+// Dedicatoria.astro
+---
+
+<section
+    id="dedicatoria"
+    class="relative w-full pt-4 pb-12 px-6 flex justify-center overflow-hidden isolate"
+>
+    <!-- FLOR DECORATIVA DERECHA -->
+    <img
+        src="/imagenes/florcostado.png"
+        alt=""
+        aria-hidden="true"
+        class="absolute top-[-2rem] left-0 w-40 pointer-events-none select-none opacity-30 z-[-1]"
+    />
+
+    <div
+        id="texto-dedicatoria"
+        class="relative z-10 max-w-xs flex flex-col items-center text-center"
+    >
+        <!-- VERSÍCULO EN PANEL DESTACADO -->
+        <div
+            data-revelar="abajo"
+            class="relative w-full rounded-3xl px-7 py-9 shadow-md"
+            style="background: linear-gradient(160deg, #fbf8f0 0%, #f4efe1 100%); border: 1px solid rgba(201,200,163,0.35);"
+        >
+            <!-- Marco beige interior -->
+            <div
+                class="pointer-events-none absolute inset-2.5 rounded-2xl border"
+                style="border-color: rgba(201,200,163,0.4);"
+            >
+            </div>
+
+            <div class="relative flex flex-col items-center">
+                <!-- ORNAMENTO SUPERIOR: rombo entre líneas -->
+                <div class="flex items-center justify-center gap-2">
+                    <span
+                        class="h-px w-10"
+                        style="background-color: rgba(201,200,163,0.6);"></span>
+                    <span
+                        class="w-1.5 h-1.5 rotate-45"
+                        style="background-color: #C9C8A3;"></span>
+                    <span
+                        class="h-px w-10"
+                        style="background-color: rgba(201,200,163,0.6);"></span>
+                </div>
+
+                <!-- VERSÍCULO -->
+                <p
+                    class="font-cormorant italic text-xl leading-relaxed mt-5"
+                    style="color: #4A1418;"
+                >
+                    A donde tú vayas iré, donde tú vivas viviré. Tu pueblo será
+                    mi pueblo y tu Dios será mi Dios.
+                </p>
+
+                <!-- REFERENCIA BÍBLICA -->
+                <p
+                    class="font-upcil text-3xl tracking-[0.12em] mt-4"
+                    style="color: #6B7133;"
+                >
+                    Rut 1:16
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

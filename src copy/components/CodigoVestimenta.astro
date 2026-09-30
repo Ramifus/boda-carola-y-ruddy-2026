@@ -1,0 +1,123 @@
+---
+// CodigoVestimenta.astro
+---
+
+<section
+    id="codigo-vestimenta"
+    class="relative w-full"
+    style="background-color: #4A1418; isolation: isolate;"
+>
+    <!-- ONDA TRANSPARENTE — muestra el fondo por defecto -->
+    <div
+        class="absolute top-0 left-0 w-full"
+        style="z-index: 1; mix-blend-mode: destination-out;"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 24"
+            preserveAspectRatio="none"
+            class="w-full block"
+            style="height: 24px;"
+        >
+            <path
+                d="M0,12 C120,3 240,3 360,12 C480,24 600,24 720,12 C840,3 960,3 1080,12 C1200,24 1320,24 1440,12 L1440,0 L0,0 Z"
+                fill="white"></path>
+        </svg>
+    </div>
+
+    <!-- FADE que cubre la línea del borde -->
+    <div
+        class="absolute left-0 w-full"
+        style="top: 20px; height: 8px; background: linear-gradient(to bottom, transparent, #4A1418); z-index: 3; pointer-events: none;"
+    >
+    </div>
+
+    <!-- FLOR DECORATIVA DERECHA -->
+    <img
+        src="/imagenes/florcostado.png"
+        alt=""
+        aria-hidden="true"
+        class="absolute top-1/2 right-0 w-40 pointer-events-none select-none opacity-20 -translate-y-1/2 scale-x-[-1]"
+        style="z-index: 1;"
+    />
+
+    <!-- CONTENIDO -->
+    <div class="relative text-center px-8 pt-16 pb-10" style="z-index: 2;">
+        <!-- TÍTULO Dress Code -->
+        <p data-revelar="arriba" class="font-great-vibes text-4xl text-[#F6F1E4] leading-none">
+            Dress Code
+        </p>
+
+        <!-- DOS COLUMNAS -->
+        <div class="flex items-start justify-center gap-6 mt-8">
+            <!-- MUJERES -->
+            <div data-revelar="izquierda" class="flex flex-col items-center flex-1">
+                <img
+                    src="/imagenes/vestido.png"
+                    alt="Mujeres"
+                    class="w-16 h-16 mx-auto"
+                    style="filter: invert(1); mix-blend-mode: screen;"
+                />
+                <p class="font-upcil uppercase text-2xl text-[#F6F1E4] mt-2">
+                    Mujeres
+                </p>
+                <p class="font-cormorant text-xl text-[#F6F1E4] mt-1">Vestido largo</p>
+            </div>
+
+            <!-- Línea divisoria vertical -->
+            <div
+                class="w-px self-stretch"
+                style="background: rgba(255,255,255,0.6); min-height: 80px;"
+            >
+            </div>
+
+            <!-- HOMBRES -->
+            <div data-revelar="derecha" class="flex flex-col items-center flex-1">
+                <img
+                    src="/imagenes/traje.png"
+                    alt="Hombres"
+                    class="w-16 h-16 mx-auto"
+                    style="filter: invert(1); mix-blend-mode: screen;"
+                />
+                <p class="font-upcil uppercase text-2xl text-[#F6F1E4] mt-2">
+                    Hombres
+                </p>
+                <p class="font-cormorant text-xl text-[#F6F1E4] mt-1">Traje</p>
+            </div>
+        </div>
+
+        <!-- NOTA FINAL -->
+        <p
+            data-revelar="abajo"
+            class="font-cormorant italic text-xl text-[#F6F1E4] mt-7 leading-relaxed"
+        >
+            Formal
+        </p>
+    </div>
+
+    <!-- ONDAS ABAJO — misma técnica, rellena hacia abajo -->
+    <div
+        class="absolute bottom-0 left-0 w-full"
+        style="z-index: 1; mix-blend-mode: destination-out;"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 24"
+            preserveAspectRatio="none"
+            class="w-full block"
+            style="height: 24px;"
+        >
+            <path
+                d="M0,12 C120,3 240,3 360,12 C480,24 600,24 720,12 C840,3 960,3 1080,12 C1200,24 1320,24 1440,12 L1440,24 L0,24 Z"
+                fill="white"></path>
+        </svg>
+    </div>
+
+    <!-- FADE inferior que cubre la línea del borde -->
+    <div
+        class="absolute left-0 w-full"
+        style="bottom: 20px; height: 8px; background: linear-gradient(to top, transparent, #4A1418); z-index: 3; pointer-events: none;"
+    >
+    </div>
+</section>
+
