@@ -11,7 +11,7 @@ const { title } = Astro.props;
 // WhatsApp guarda la vista previa por dirección: si se cambia la imagen sin
 // cambiar la dirección, sigue mostrando la vieja. Subir este número obliga a
 // que la vuelva a pedir.
-const versionMiniatura = 2;
+const versionMiniatura = 3;
 const rutaMiniatura = `/imagenes/miniatura-og.jpg?v=${versionMiniatura}`;
 const miniatura = Astro.site
   ? new URL(rutaMiniatura, Astro.site).href
